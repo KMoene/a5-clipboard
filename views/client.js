@@ -17,12 +17,14 @@ const handleNewMessage = function (e) {
     })
     .then(async function (response) {
         let data = await response.json()
-        // Decrypt debug
+
+        // DEGUB: Decrypt 
         var bytes  = CryptoJS.AES.decrypt(data.msg, password);
         var originalText = bytes.toString(CryptoJS.enc.Utf8);
         console.log(data.mid);
         console.log(data.msg);
         console.log(originalText);
+        // end of DEBUG
 
         // adding info
         const origin = window.location.host
