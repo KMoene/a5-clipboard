@@ -12,5 +12,21 @@
     <p>Welcome to <%= title %>.</p>
     <p>MOTD: <%= motd %></p>
     <p><a href="/logout">Logout</a></p>
+
+   <!-- TODO: using ejs -->
+    <div id="msgLink"></div>
+    <br><div id="msgLink"></div>
+    <!-- end of TODO -->
+
+    <form>
+      <label>Message</label>
+      <input type='text' id='newMessage' required>
+      <label>Password</label>
+      <input type='text' id='password' required>
+      <button id="addNewMessage">Add</button>
+    </form>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js" integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="client.js"></script>
   </body>
 </html>
