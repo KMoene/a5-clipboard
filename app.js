@@ -5,8 +5,8 @@ const express = require('express'),
   compression = require('compression'),
   rid = require('connect-rid'),
   app = express()
-
-require('dotenv').config()
+  require('dotenv').config()
+  
 
 const uri = 'mongodb+srv://' + process.env.DBUSER + ':' + process.env.DBPASS + '@' + process.env.DBHOST
 const client = new mongo.MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true })
@@ -82,11 +82,14 @@ app.post('/submit', (req, res) => {
         tempdata.anonymous = false;
       }
       tempdata.mid = parseInt(crc32(tempdata.name + tempdata.message + formatDate() + (Math.random() * 1000)), 16)
-      collection.insertOne(tempdata).then(response => {
-        res.writeHead(200, { 'Content-Type': 'application/json' })
+      collection.insertOne(tempdata)
+      .then(response => {
+        //res.writeHead(200, { 'Content-Type': 'application/json' })
         res.end(JSON.stringify({
           "RESULT": "NEW_OK",
-          "mid":tempdata.mid
+          "mid":tempdata.mid,
+          // just for now
+          "msg": tempdata.message
         }))
       })
       break;
@@ -133,8 +136,8 @@ app.get('/logout', (req, res) => {
   req.session.login = false;
   res.redirect('/login');
 });
-app.get('/getmessage', (req, res) => {
-  const messageID = req.query.m
+app.post('/getmessage', (req, res) => {
+  const messageID = req.body.mid
   console.log(messageID)
   let response = []
   collection.find({mid:Number(messageID)}).toArray().then(result => {
@@ -156,6 +159,10 @@ app.get('/getmessage', (req, res) => {
     res.json(response)
   }
   )
+});
+
+app.get('/s/', (req, res) => {
+  res.render("viewing")
 });
 
 //oauth
