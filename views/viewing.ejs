@@ -4,11 +4,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Message</title>
+    <title>View Message | Moene's Secret Clipboard</title>
+    <link rel="stylesheet" href="/stylesheets/semantic.css">
+    <link rel="stylesheet" href="/stylesheets/style.css">
     <link rel="icon" type="image/x-icon" href="images/favicon/favicon.ico" />
 </head>
-<body>
-    <form>
+<body onload="getMessage()">
+    <h1>Moene's Secret Clipboard</h1>
+    <h2 id="header2">Decrypt Message</h2>
+    <div id="text">Here's a message shared to you from <span id="sender-name"></span></div>
+    <form id="decrypt-form">
         <label>Input Password to View Message</label><br>
         <input type='text' id='password' required>
         <button id="viewMessage">view</button>
