@@ -28,7 +28,13 @@ const handleNewMessage = function (e) {
 
         // adding info
         const origin = window.location.host
-        document.getElementById("msgLink").textContent =  origin+"/s/?m=" + data.mid
+        document.getElementById("msg-link").style.visibility="visible";
+        if (location.protocol !== 'https:') {
+            document.getElementById("msgLink").value =  "http://"+origin+"/s/?m=" + data.mid
+        }else{
+            document.getElementById("msgLink").value =  "https://"+origin+"/s/?m=" + data.mid
+        }
+        
     })
 }
 

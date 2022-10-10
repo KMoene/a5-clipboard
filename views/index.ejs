@@ -14,10 +14,13 @@
     <p>MOTD: <%= motd %></p>
     <p><a href="/logout">Logout</a></p>
 
-   <!-- TODO: using ejs -->
-    <div id="msgLink"></div>
-    <br><div id="msgLink"></div>
-    <!-- end of TODO -->
+    <div class="ui action input" id="msg-link" style="visibility:hidden;">
+      <input type="text" id="msgLink" value="http://ww.short.url/c0opq">
+      <button class="ui teal right labeled icon button">
+        <i class="copy icon"></i>
+        Copy
+      </button>
+    </div>
 
     <form>
       <label>Message</label>

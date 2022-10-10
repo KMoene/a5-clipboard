@@ -31,17 +31,11 @@ const handleViewing = function (e) {
     // prevent default form action from being carried out
     e.preventDefault()
     const password = document.querySelector('#password').value
-    
     // Decrypt
-    var bytes  = CryptoJS.AES.decrypt(data.message, password);
+    var bytes  = CryptoJS.AES.decrypt(cryptMessage, password);
     var originalText = bytes.toString(CryptoJS.enc.Utf8);
-    console.log(data.mid);
-    console.log(data.message);
-    console.log(originalText);
-
     // showing info
     document.getElementById("msgContent").textContent =  originalText
-    
 }
 
 window.onload = function () {
