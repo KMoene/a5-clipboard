@@ -1,36 +1,44 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <title>New Message | Moene's Secret Clipboard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/stylesheets/semantic.css">
     <link rel="stylesheet" href="/stylesheets/style.css">
-    <link rel="icon" type="image/x-icon" href="images/favicon/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %>.</p>
-    <p>MOTD: <%= motd %></p>
+</head>
+
+<body>
+    <h1>
+        <%= title %>
+    </h1>
+    <p>Welcome to
+        <%= title %>.</p>
+    <p>MOTD:
+        <%= motd %>
+    </p>
     <p><a href="/logout">Logout</a></p>
 
     <div class="ui action input" id="msg-link" style="visibility:hidden;">
-      <input type="text" id="msgLink" value="http://ww.short.url/c0opq">
-      <button class="ui teal right labeled icon button">
+        <input type="text" id="msgLink" value="http://ww.short.url/c0opq">
+        <button class="ui teal right labeled icon button">
         <i class="copy icon"></i>
         Copy
       </button>
     </div>
 
     <form>
-      <label>Message</label>
-      <input type='text' id='newMessage' required>
-      <label>Password</label>
-      <input type='text' id='password' required>
-      <button id="addNewMessage">Add</button>
+        <label>Message</label>
+        <input type='text' id='newMessage' required>
+        <label>Password</label>
+        <input type='text' id='password' required>
+        <button id="addNewMessage">Add</button>
     </form>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js" integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="client.js"></script>
-  </body>
+</body>
+
 </html>
