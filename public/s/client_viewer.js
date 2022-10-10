@@ -18,6 +18,8 @@ fetch('/getmessage', {
         sender = data[0].name
         if (sender!="") {
             document.getElementById("sender-name").textContent=sender
+        }else{
+            document.getElementById("sender-name").textContent="Anonymous"
         }
     }else{
         document.title = "Message Not Found | Moene's Secret Clipboard"
