@@ -64,7 +64,6 @@ app.post('/submit', (req, res) => {
             let tempdata = {}
             tempdata.image = req.body.image
             console.log(req.body)
-                //tempdata.name = "owo"
             tempdata.name = req.session.name
             if (req.body.message != "") {
                 tempdata.message = req.body.message
