@@ -1,36 +1,65 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <title>New Message | Moene's Secret Clipboard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/stylesheets/semantic.css">
     <link rel="stylesheet" href="/stylesheets/style.css">
-    <link rel="icon" type="image/x-icon" href="images/favicon/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %>.</p>
-    <p>MOTD: <%= motd %></p>
-    <p><a href="/logout">Logout</a></p>
+</head>
 
-    <div class="ui action input" id="msg-link" style="visibility:hidden;">
-      <input type="text" id="msgLink" value="http://ww.short.url/c0opq">
-      <button class="ui teal right labeled icon button">
+<body>
+    <section>
+        <header>
+            <img class="logo" src="images/logo.png" alt="logo">
+            <h1 class="subtitle">
+                <%= title %>
+            </h1>
+            <a href="/logout"><button><span class="fa fa-github"></span> Logout</button></a>
+        </header>
+    </section>
+    <div>
+
+        <p class="instruction">Welcome to
+            <%= title %>.Please enter the message you want to send and the password that goes with it below. Note that your password is the only way you can view this information, so keep that in mind!</p>
+        <p class="instruction">MOTD:
+            <div class="instruction">
+                <%= motd %>
+            </div>
+        </p>
+
+
+
+        <div class="container">
+            <h1 class="subtitle">Leave Your Message</h1>
+            <form>
+                <div class="form-control">
+                    <input type="text " id='newMessage' required>
+                    <label>  Message</label>
+                </div>
+
+                <div class="form-control">
+                    <input type="password" id='password' required>
+                    <label>Password</label>
+                </div>
+                <button class="addbutton" id="addNewMessage">Add</button>
+            </form>
+
+
+
+        </div>
+        <div class="ui action input" id="msg-link" style="visibility:hidden;">
+            <input type="text" id="msgLink" value="http://ww.short.url/c0opq">
+            <button class="ui teal right labeled icon button">
         <i class="copy icon"></i>
         Copy
       </button>
-    </div>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js" integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="client.js"></script>
 
-    <form>
-      <label>Message</label>
-      <input type='text' id='newMessage' required>
-      <label>Password</label>
-      <input type='text' id='password' required>
-      <button id="addNewMessage">Add</button>
-    </form>
+</body>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js" integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="client.js"></script>
-  </body>
 </html>
