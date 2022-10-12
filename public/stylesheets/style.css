@@ -1,79 +1,321 @@
-/*Style your own assignment! This is fun! *//*
+/*Style your own assignment! This is fun! */
+
+
+/*
 * KMoene Common CSS
 */
-html, body {
-	min-height: 100%;
-	background: #ffffff;
-	color: #000000;
-    font-family: "PT Sans";
-    font-display: swap;
+
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Roboto:wght@700&display=swap');
+li,
+a,
+button {
+    font-family: "Lato", sans-serif;
+    font-weight: bold;
+    font-size: 32px;
+    color: #ffffff;
+    text-decoration: none;
 }
 
-div {
-    display: inline
+header {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    padding: 25px 2%;
 }
 
-#nav-area {
-    font-family: "PT Sans";
-    font-display: swap;
+section {
+    width: 100%;
+    background: linear-gradient( 135deg, #015B7E, #0d8AAA, #0eBBB7);
+    background-size: 400%;
+    animation: anim 4s infinite alternate;
 }
 
-.maingrid {  display: grid;
-    grid-template-columns: 1fr 0.8fr 1.2fr;
-    grid-template-rows: 0.1fr 1fr 1fr;
-    gap: 5px 5px;
-    grid-auto-flow: row;
-    grid-template-areas:
-      "a a a"
-      "b c c"
-      "b c c";
-  }
-  
-  .nav-grid { grid-area: a; }
-  
-  .policy-grid { grid-area: b; }
-  
-  .data-grid { grid-area: c; }
-  
+@keyframes anim {
+    from {
+        background-position: 0%;
+    }
+    to {
+        background-position: 100%;
+    }
+}
+
+.logo {
+    width: 200px;
+    cursor: pointer;
+    margin-right: auto;
+}
+
+.nav__links {
+    list-style: none;
+}
+
+.nav__links li {
+    display: inline-block;
+    padding: 0px 20px;
+}
+
+.nav__links li a {
+    transition: all 0.3s wase 0s;
+}
+
+.nav__links li hover {
+    color: blue
+}
+
+button {
+    padding: 10px 75px;
+    margin-left: 20px;
+    background-color: rgb(0, 0, 0);
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s wase 0s;
+}
+
+button:hover {
+    background-color: rgba(44, 44, 44, 0.8);
+}
 
 body {
-	font-size: 1.3rem;
-	text-rendering: optimizeLegibility;
-    margin-left: 15%;
-    margin-right: 15%;
-    background-color: #ffffff;
+    background: linear-gradient( 135deg, #0F2027, #203A43, #2C5364);
+    margin: 0;
+    padding: 0;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.console-container {
+    font-family: 'Silkscreen', cursive;
+    font-size: 40px;
+    text-align: center;
+    width: 600px;
+    display: block;
+    position: relative;
+    color: white;
+    padding-top: 150px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.console-underscore {
+    display: inline-block;
+    position: relative;
+    top: -0.14em;
+    left: 10px;
+}
+
+.slogan {
+    text-align: center;
+    font-family: 'Lato', sans-serif;
+    font-family: 'Roboto', sans-serif;
+    padding-top: 150px;
+    font-size: 60px;
+    color: #ffffff;
+    animation: fadeIn 1s ease-in both;
+}
+
+.slogan-text {
+    font-family: 'Lato', sans-serif;
+    font-size: 28px;
+    font-weight: normal;
+    color: #ffffff;
+    text-align: center;
+    /*center*/
+    margin: auto;
+    width: 50%;
+    padding: 15px;
+    animation-delay: 1s;
+    animation: fadeIn 1s ease-in both;
+}
+
+.center {
+    margin: auto;
+    width: 18%;
+    padding: 30px;
+    font-size: large;
+    animation-delay: 1s;
+    animation: fadeIn 1s ease-in both;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translate3d(0, -20%, 0);
+    }
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+.row {
+    font-family: 'Lato', sans-serif;
+    font-size: 28px;
+    font-weight: normal;
+    color: #ffffff;
+    text-align: center;
+    /*center*/
+    margin: auto;
+    width: 50%;
+    padding: 15px;
+}
+
+#sender-name {
+    background-image: linear-gradient(to right, rgb(25, 0, 255), rgb(32, 209, 209));
+    background-clip: border-box;
+    -webkit-background-clip: text;
+    color: transparent;
+    font-size: 30px;
+    font-weight: bold;
 }
 
 h1 {
-    font-family: "Playfair Display";
-    font-display: swap;
-    background-color: #990000;
+    font-family: 'Lato', sans-serif;
+    font-size: 50px;
+    font-weight: normal;
     color: #ffffff;
+    text-align: center;
 }
 
-h2 {
-    background-color: #656565;
+.instruction {
+    animation-delay: 1s;
+    animation: fadeIn 1s ease-in both;
+    letter-spacing: 1px;
+    font-size: 24px;
+    font-family: 'Lato', sans-serif;
+    font-size: 28px;
+    font-weight: normal;
     color: #ffffff;
-}
-li {
-    color: #CE5050;
-}
-
-.typewriter {
-    font-family: 'IBM Plex Mono';
-    font-display: swap;
+    text-align: center;
+    /*center*/
+    margin: auto;
+    width: 50%;
+    padding: 15px;
 }
 
-img {
+.subtitle {
+    text-align: center;
+    font-family: 'Lato', sans-serif;
+    font-family: 'Roboto', sans-serif;
+    font-size: 36px;
+    color: #ffffff;
+    margin: 0 20% 0;
+    animation: fadeIn 1s ease-in both;
+}
+
+.addbutton {
+    padding: 18px 75px;
+    background-color: rgb(54, 184, 171);
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s wase 0s;
+}
+
+.addbutton:hover {
+    background-color: teal;
+}
+
+
+/*form wave*/
+
+.container {
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 20px 40px;
+    border-radius: 5px;
+    font-family: 'Lato', sans-serif;
+    font-size: 28px;
+    font-weight: normal;
+    color: #ffffff;
+    text-align: center;
+    width: 70%;
+    margin: auto;
+}
+
+.container h1 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.container a {
+    text-decoration: none;
+    color: lightblue;
+}
+
+.form-control {
+    position: relative;
+    margin: 20px 25% 40px;
+    width: 50%;
+    height: 50%;
+}
+
+.form-control input {
+    background-color: transparent;
+    border: 0;
+    border-bottom: 2px solid #fff;
+    display: block;
     width: 100%;
+    padding: 15px 0;
+    font-size: 18px;
+    color: #fff;
 }
 
-a {
-    color: firebrick;
+.form-control input:focus,
+.form-control input:valid {
+    outline: none;
+    border-bottom-color: lightblue;
 }
-a:focus {
-    background-color: lightblue;
+
+.form-control label {
+    position: absolute;
+    top: 15px;
+    left: 0;
+    pointer-events: none;
 }
-a:active {
-    background-color: yellow;
+
+.form-control label span {
+    display: inline-block;
+    font-size: 18px;
+    min-width: 5px;
+    transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.form-control input:focus+label span,
+.form-control input:valid+label span {
+    color: lightblue;
+    transform: translateY(-30px);
+}
+
+label {
+    display: block;
+}
+
+input {
+    height: 50px;
+}
+
+#viewMessage {
+    padding: 10px 75px;
+}
+
+.message-container {
+    background: rgba(255, 255, 255, .7);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(1px);
+}
+
+.textarea-resized {
+    text-align: left;
+    width: 50%;
+    height: 50%;
+    margin: auto;
+    line-height: 1.5;
+    font-family: 'Lato';
 }

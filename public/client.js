@@ -1,9 +1,10 @@
 // called when posting message
-const handleNewMessage = function (e) {
-    // prevent default form action from being carried out
-    e.preventDefault()
+var myCodeMirror
+const handleNewMessage = function(e) {
+        // prevent default form action from being carried out
+        e.preventDefault()
 
-    const message = document.querySelector('#newMessage').value,
+    const message = message = myCodeMirror.getDoc().getValue(),
         image = document.querySelector('#newImage').files[0],
         password = document.querySelector('#password').value,
         // encrypt the message
@@ -52,9 +53,28 @@ const handleNewMessage = function (e) {
     reader.readAsArrayBuffer(image)
 }
 
+const labels = document.querySelectorAll(".form-control label");
 
-window.onload = function () {
+labels.forEach((label) => {
+    label.innerHTML = label.innerText
+        .split("")
+        .map(
+            (letter, idx) =>
+            `<span style="transition-delay:${idx * 50}ms">${letter}</span>`
+        )
+        .join("");
+});
+
+
+window.onload = function() {
     const addMessage_btn = document.querySelector('#addNewMessage')
     addMessage_btn.onclick = handleNewMessage
+    myCodeMirror = CodeMirror.fromTextArea(document.getElementById("newMessage"),{
+        lineNumbers: true,
+        gutter: true,
+        lineWrapping: true,
+        theme:"monokai",
+        styleActiveLine: {nonEmpty: true},
+        styleActiveSelected: true,
+    });
 }
-

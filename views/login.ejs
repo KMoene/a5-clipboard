@@ -1,24 +1,91 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <title>Login | Moene's Secret Clipboard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/stylesheets/semantic.css">
     <link rel="stylesheet" href="/stylesheets/style.css">
-    <link rel="icon" type="image/x-icon" href="images/favicon/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Silkscreen&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <h1>Moene's Secret Clipboard</h1>
-    <div>
-        <h2>Login</h2>
-        <div class="ui stackable center aligned page grid segment">
-            <div class="column twelve wide ui header">Please login with</div>
-            <a href="https://github.com/login/oauth/authorize?client_id=<%= client_id %>"
-                class="column six wide ui primary button"><span class="fa fa-github"></span> Github Login</a>
-        </div>
+
+    <!--header-->
+    <section>
+        <header>
+            <img class="logo" src="images/logo.png" alt="logo">
+            <a href="https://github.com/login/oauth/authorize?client_id=<%= client_id %>"> <button><span
+                        class="fa fa-github"></span> Github Login</button></a>
+        </header>
+    </section>
+
+
+    <h1 class="slogan">E2E ENCRYPTED PASTEBIN</h1>
+    <p class="slogan-text">Moene's secret clipboard provides you with trusted encrypted text pasting with others. Use
+        your GitHub account to quickly share your first paste!</p>
+    <div class="center">
+        <a href="https://github.com/login/oauth/authorize?client_id=<%= client_id %>"> <button>Login</button> </a>
     </div>
+    <!--animation-->
+    <div class="console-container"><span id="text"></span>
+        <div class="console-underscore" id="console">&#95;</div>
+    </div>
+
+    <script type="text/javascript">
+        consoleText(['Share a log...', 'Tell a secret...', 'Send a snippet...', 'Share some lyrics...', 'UWU'], 'text', ['#FFFFFF']);
+
+        function consoleText(words, id, colors) {
+            if (colors === undefined) colors = ['#fff'];
+            var visible = true;
+            var con = document.getElementById('console');
+            var letterCount = 1;
+            var x = 1;
+            var waiting = false;
+            var target = document.getElementById(id)
+            target.setAttribute('style', 'color:' + colors[0])
+            window.setInterval(function () {
+
+                if (letterCount === 0 && waiting === false) {
+                    waiting = true;
+                    target.innerHTML = words[0].substring(0, letterCount)
+                    window.setTimeout(function () {
+                        var usedColor = colors.shift();
+                        colors.push(usedColor);
+                        var usedWord = words.shift();
+                        words.push(usedWord);
+                        x = 1;
+                        target.setAttribute('style', 'color:' + colors[0])
+                        letterCount += x;
+                        waiting = false;
+                    }, 1000)
+                } else if (letterCount === words[0].length + 1 && waiting === false) {
+                    waiting = true;
+                    window.setTimeout(function () {
+                        x = -1;
+                        letterCount += x;
+                        waiting = false;
+                    }, 1000)
+                } else if (waiting === false) {
+                    target.innerHTML = words[0].substring(0, letterCount)
+                    letterCount += x;
+                }
+            }, 120)
+            window.setInterval(function () {
+                if (visible === true) {
+                    con.className = 'console-underscore hidden'
+                    visible = false;
+
+                } else {
+                    con.className = 'console-underscore'
+
+                    visible = true;
+                }
+            }, 400)
+        }
+    </script>
 </body>
 
 </html>
