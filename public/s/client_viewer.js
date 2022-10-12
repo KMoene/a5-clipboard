@@ -2,13 +2,9 @@ let cryptMessage = ""
 let sender = ""
 var myCodeMirror
 console.log("Loading data...")
-const mid = window.location.search.replace(/[^0-9]/g,""),
-    json = { mid:mid },
-    body = JSON.stringify(json)
-fetch('/getmessage', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body
+const mid = window.location.search.replace(/[^0-9]/g,"")
+fetch('/getmessage?mid='+mid, {
+    method: 'GET'
 })
 .then(async function (response) {
     let data = await response.json()
