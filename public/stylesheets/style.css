@@ -235,6 +235,8 @@ h1 {
     font-weight: normal;
     color: #ffffff;
     text-align: center;
+    width: 70%;
+    margin: auto;
 }
 
 .container h1 {
@@ -249,8 +251,9 @@ h1 {
 
 .form-control {
     position: relative;
-    margin: 20px 600px 40px;
-    width: 600px;
+    margin: 20px 25% 40px;
+    width: 50%;
+    height: 50%;
 }
 
 .form-control input {
@@ -306,4 +309,13 @@ input {
     background: rgba(255, 255, 255, .7);
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(1px);
+}
+
+.textarea-resized {
+    text-align: left;
+    width: 50%;
+    height: 50%;
+    margin: auto;
+    line-height: 1.5;
+    font-family: 'Lato';
 }
