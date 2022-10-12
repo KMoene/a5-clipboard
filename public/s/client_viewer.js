@@ -30,14 +30,13 @@ fetch('/getmessage?mid=' + mid, {
             } else {
                 document.getElementById("sender-name").textContent = "Anonymous"
             }
-            if (passwd != "") {
-                const password = document.querySelector('#password').value
+            if (passwd != null) {
                 // Decrypt
-                var bytes = CryptoJS.AES.decrypt(cryptMessage, password);
+                var bytes = CryptoJS.AES.decrypt(cryptMessage, passwd);
                 var originalText = bytes.toString(CryptoJS.enc.Utf8);
                 // Decrypt image
                 if (cryptImage != '' && originalText != "") {
-                    var decryptedImage = CryptoJS.AES.decrypt(cryptImage, password)
+                    var decryptedImage = CryptoJS.AES.decrypt(cryptImage, passwd)
                     try {
                         var typedArray = convertWordArrayToUint8Array(decryptedImage)
                         var fileDec = new Blob([typedArray])
