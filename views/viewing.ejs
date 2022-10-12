@@ -11,13 +11,15 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
 </head>
 
-<body>
+<body class="row">
+
+
     <h1>Moene's Secret Clipboard</h1>
     <h2 id="header2">Decrypt Message</h2>
     <div id="text">Here's a message shared to you from <span id="sender-name"></span></div>
     <form id="decrypt-form">
         <label>Input Password to View Message</label><br>
-        <input type='text' id='password' required>
+        <input type='text' id='password' required placeholder="Enter the password">
         <button id="viewMessage">view</button>
     </form>
 
