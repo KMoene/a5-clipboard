@@ -46,16 +46,16 @@ const handleViewing = function (e) {
     var bytes  = CryptoJS.AES.decrypt(cryptMessage, password);
     var originalText = bytes.toString(CryptoJS.enc.Utf8);
     // Decrypt image
-    console.log('cryptImage')
-    console.log(cryptImage)
-    var decryptedImage = CryptoJS.AES.decrypt(cryptImage, password)
-    console.log(decryptedImage)
-    var typedArray = convertWordArrayToUint8Array(decryptedImage)
-    var fileDec = new Blob([typedArray])
-    var img = document.createElement("img")
-    var url = window.URL.createObjectURL(fileDec)
-    img.src = url
-    document.body.appendChild(img)
+    if(cryptImage!=''){
+        var decryptedImage = CryptoJS.AES.decrypt(cryptImage, password)
+        var typedArray = convertWordArrayToUint8Array(decryptedImage)
+        var fileDec = new Blob([typedArray])
+        var img = document.createElement("img")
+        var url = window.URL.createObjectURL(fileDec)
+        img.src = url
+        container = document.getElementById('container')
+        container.appendChild(img)
+    }
 
     // showing info
     myCodeMirror.getDoc().setValue(originalText)
