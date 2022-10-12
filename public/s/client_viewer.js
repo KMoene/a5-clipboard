@@ -1,7 +1,14 @@
 let cryptMessage = ""
 let cryptImage = ""
 let sender = ""
-var myCodeMirror
+const myCodeMirror = CodeMirror.fromTextArea(document.getElementById("msgContent"), {
+    lineNumbers: true,
+    gutter: true,
+    lineWrapping: true,
+    theme: "monokai",
+    styleActiveLine: { nonEmpty: true },
+    styleActiveSelected: true,
+});
 console.log("Loading data...")
 const params = new URLSearchParams(window.location.search);
 mid = params.get('m')
@@ -22,14 +29,6 @@ fetch('/getmessage?mid=' + mid, {
             } else {
                 document.getElementById("sender-name").textContent = "Anonymous"
             }
-            myCodeMirror = CodeMirror.fromTextArea(document.getElementById("msgContent"), {
-                lineNumbers: true,
-                gutter: true,
-                lineWrapping: true,
-                theme: "monokai",
-                styleActiveLine: { nonEmpty: true },
-                styleActiveSelected: true,
-            });
         } else {
             document.title = "Message Not Found | Moene's Secret Clipboard"
             document.getElementById("header2").textContent = "404 Message Not Found"
