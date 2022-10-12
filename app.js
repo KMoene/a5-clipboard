@@ -6,7 +6,7 @@ const express = require('express'),
   rid = require('connect-rid'),
   app = express()
   require('dotenv').config()
-  
+
 
 const uri = 'mongodb+srv://' + process.env.DBUSER + ':' + process.env.DBPASS + '@' + process.env.DBHOST
 const client = new mongo.MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true })
@@ -25,8 +25,8 @@ client.connect()
   .then(console.log)
 
 app.set('view engine', 'ejs');
-
-app.use(express.urlencoded({ extended: true }))
+app.use(express.json({limit: '16mb'}));
+app.use(express.urlencoded({limit: '16mb', extended: true }))
 app.use(express.static('public'))
 app.use(express.static('views'))
 app.use(cookie({
@@ -74,6 +74,7 @@ app.post('/submit', (req, res) => {
           "RESULT":"ERR_NO_MSG"
         }))
       }
+      tempdata.image = req.body.image
       tempdata.date = formatDate()
       //Doing this to prevent user input getting into tempdata.anonymous
       if (req.body.anonymous=="true") {
@@ -89,7 +90,8 @@ app.post('/submit', (req, res) => {
           "RESULT": "NEW_OK",
           "mid":tempdata.mid,
           // just for now
-          "msg": tempdata.message
+          "msg": tempdata.message,
+          "img": tempdata.image
         }))
       })
       break;
@@ -146,12 +148,14 @@ app.post('/getmessage', (req, res) => {
         response.push({
           "name": "",
           "message": element.message,
+          "image": element.image,
           "mid": element.mid
         })
       }else{
         response.push({
           "name": element.name,
           "message": element.message,
+          "image": element.image,
           "mid": element.mid
         })
       }
