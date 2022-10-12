@@ -15,9 +15,11 @@ const handleNewMessage = function(e) {
     reader.onload = () => {
         // Image Encryption
         let encryptedImage = ''
+        let isAnonymous = document.getElementById("is-anonymous").checked;
+        let inclPasswd = document.getElementById("incl-password").checked;
         const wordArray = CryptoJS.lib.WordArray.create(reader.result)
         encryptedImage = CryptoJS.AES.encrypt(wordArray, password).toString()
-        const json = { message: ciphertext, image: encryptedImage, action: "new" },
+        const json = { message: ciphertext, image: encryptedImage, action: "new",anonymous:isAnonymous },
         body = JSON.stringify(json)
 
         // Send data to server

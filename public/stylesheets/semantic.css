@@ -29620,9 +29620,9 @@
  
  .ui.checkbox label,
  .ui.checkbox+label {
-     color: rgba(0, 0, 0, 0.87);
+     /*color: rgba(0, 0, 0, 0.87);
      -webkit-transition: color 0.1s ease;
-     transition: color 0.1s ease;
+     transition: color 0.1s ease;*/
  }
  /* Outside */
  
@@ -29644,7 +29644,7 @@
  
  .ui.checkbox label:hover,
  .ui.checkbox+label:hover {
-     color: rgba(0, 0, 0, 0.8);
+     color: rgba(255, 255, 255, 0.8);
  }
  /*--------------
        Down
@@ -29658,11 +29658,11 @@
  
  .ui.checkbox .box:active::after,
  .ui.checkbox label:active::after {
-     color: rgba(0, 0, 0, 0.95);
+     color: rgba(255, 255, 255, 0.95);
  }
  
  .ui.checkbox input:active~label {
-     color: rgba(0, 0, 0, 0.95);
+     color: rgba(255, 255, 255, 0.95);
  }
  /*--------------
       Focus
@@ -29676,11 +29676,11 @@
  
  .ui.checkbox input:focus~.box:after,
  .ui.checkbox input:focus~label:after {
-     color: rgba(0, 0, 0, 0.95);
+     color: rgba(255, 255, 255, 0.95);
  }
  
  .ui.checkbox input:focus~label {
-     color: rgba(0, 0, 0, 0.95);
+     color: rgba(255, 255, 255, 0.95);
  }
  /*--------------
       Active
@@ -29710,7 +29710,7 @@
  .ui.checkbox input:not([type=radio]):indeterminate~.box:after,
  .ui.checkbox input:not([type=radio]):indeterminate~label:after {
      opacity: 1;
-     color: rgba(0, 0, 0, 0.95);
+     color: rgba(255, 255, 255, 0.95);
  }
  /*--------------
    Active Focus
@@ -29987,7 +29987,7 @@
  .ui.toggle.checkbox label {
      min-height: 1.5rem;
      padding-left: 4.5rem;
-     color: rgba(0, 0, 0, 0.87);
+     /*color: rgba(0, 0, 0, 0.87);*/
  }
  
  .ui.toggle.checkbox label {
