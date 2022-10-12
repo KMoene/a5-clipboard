@@ -1,13 +1,4 @@
 const express = require('express'),
-<<<<<<< HEAD
-  cookie = require('cookie-session'),
-  mongo = require('mongodb'),
-  crc32 = require('crc32'),
-  compression = require('compression'),
-  rid = require('connect-rid'),
-  app = express()
-  require('dotenv').config()
-=======
     cookie = require('cookie-session'),
     mongo = require('mongodb'),
     crc32 = require('crc32'),
@@ -15,7 +6,6 @@ const express = require('express'),
     rid = require('connect-rid'),
     app = express()
 require('dotenv').config()
->>>>>>> main
 
 
 const uri = 'mongodb+srv://' + process.env.DBUSER + ':' + process.env.DBPASS + '@' + process.env.DBHOST
@@ -67,71 +57,12 @@ app.post('/submit', (req, res) => {
         res.end(JSON.stringify({
             "Error": "NEED_LOGIN"
         }))
-<<<<<<< HEAD
-      }
-      tempdata.image = req.body.image
-      tempdata.date = formatDate()
-      //Doing this to prevent user input getting into tempdata.anonymous
-      if (req.body.anonymous=="true") {
-        tempdata.anonymous = true;
-      }else{
-        tempdata.anonymous = false;
-      }
-      tempdata.mid = parseInt(crc32(tempdata.name + tempdata.message + formatDate() + (Math.random() * 1000)), 16)
-      collection.insertOne(tempdata)
-      .then(response => {
-        //res.writeHead(200, { 'Content-Type': 'application/json' })
-        res.end(JSON.stringify({
-          "RESULT": "NEW_OK",
-          "mid":tempdata.mid,
-          // just for now
-          "msg": tempdata.message,
-          "img": tempdata.image
-        }))
-      })
-      break;
-    case "delete":
-      let delquery = {
-        mid: req.body.mid
-      }
-      collection
-        //The name field is used to enforce the user to only delete their own message on the server side
-        .deleteOne({ mid: Number(req.body.mid), name: req.session.name })
-        .then(result => {
-          res.writeHead(200, { 'Content-Type': 'application/json' })
-          res.end(JSON.stringify({
-            "RESULT": "DELETE_OK"
-          }))
-        })
-      break;
-    case "edit":
-      collection
-        //The name field is used to enforce the user to only edit their own message on the server side
-        .updateOne(
-          { mid: Number(req.body.mid), name: req.session.name },
-          { $set: { message: req.body.message } }
-        )
-        .then(result => {
-          res.writeHead(200, { 'Content-Type': 'application/json' })
-          res.end(JSON.stringify({
-            "RESULT": "EDIT_OK"
-          }))
-        })
-      break;
-    default:
-      res.writeHead(403, { 'Content-Type': 'application/json' })
-      res.end(JSON.stringify({
-        "RESULT": "UNKNOWN_ACTION"
-      }))
-      break;
-  }
-=======
         return;
     }
-    console.log(req.body)
     switch (req.body.action) {
         case "new":
             let tempdata = {}
+            tempdata.image = req.body.image
             console.log(req.body)
                 //tempdata.name = "owo"
             tempdata.name = req.session.name
@@ -157,6 +88,7 @@ app.post('/submit', (req, res) => {
                         "RESULT": "NEW_OK",
                         "mid": tempdata.mid,
                         // just for now
+                        "img": tempdata.image,
                         "msg": tempdata.message
                     }))
                 })
@@ -193,7 +125,6 @@ app.post('/submit', (req, res) => {
             }))
             break;
     }
->>>>>>> main
 })
 app.get('/login', (req, res) => {
     res.render('login', { client_id: clientID });
@@ -202,29 +133,6 @@ app.get('/logout', (req, res) => {
     req.session.login = false;
     res.redirect('/login');
 });
-<<<<<<< HEAD
-app.post('/getmessage', (req, res) => {
-  const messageID = req.body.mid
-  console.log(messageID)
-  let response = []
-  collection.find({mid:Number(messageID)}).toArray().then(result => {
-    result.forEach(element => {
-      if (element.anonymous) {
-        response.push({
-          "name": "",
-          "message": element.message,
-          "image": element.image,
-          "mid": element.mid
-        })
-      }else{
-        response.push({
-          "name": element.name,
-          "message": element.message,
-          "image": element.image,
-          "mid": element.mid
-        })
-      }
-=======
 app.get('/getmessage', (req, res) => {
     const messageID = req.query.mid
     console.log(messageID)
@@ -235,18 +143,19 @@ app.get('/getmessage', (req, res) => {
                 response.push({
                     "name": "",
                     "message": element.message,
+                    "image": element.image,
                     "mid": element.mid
                 })
             } else {
                 response.push({
                     "name": element.name,
                     "message": element.message,
+                    "image": element.image,
                     "mid": element.mid
                 })
             }
         })
         res.json(response)
->>>>>>> main
     })
 });
 
