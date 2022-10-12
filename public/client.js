@@ -1,9 +1,10 @@
 // called when posting message
+var myCodeMirror
 const handleNewMessage = function(e) {
         // prevent default form action from being carried out
         e.preventDefault()
 
-        const message = document.querySelector('#newMessage').value,
+        const message = myCodeMirror.getDoc().getValue(),
             password = document.querySelector('#password').value,
             // encrypt the message
             ciphertext = CryptoJS.AES.encrypt(message, password).toString(),
@@ -55,4 +56,12 @@ labels.forEach((label) => {
 window.onload = function() {
     const addMessage_btn = document.querySelector('#addNewMessage')
     addMessage_btn.onclick = handleNewMessage
+    myCodeMirror = CodeMirror.fromTextArea(document.getElementById("newMessage"),{
+        lineNumbers: true,
+        gutter: true,
+        lineWrapping: true,
+        theme:"monokai",
+        styleActiveLine: {nonEmpty: true},
+        styleActiveSelected: true,
+    });
 }

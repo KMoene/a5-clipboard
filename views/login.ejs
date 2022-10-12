@@ -17,14 +17,15 @@
     <section>
         <header>
             <img class="logo" src="images/logo.png" alt="logo">
-
-            <a href="https://github.com/login/oauth/authorize?client_id=<%= client_id %>"> <button><span class="fa fa-github"></span> Github Login</button></a>
+            <a href="https://github.com/login/oauth/authorize?client_id=<%= client_id %>"> <button><span
+                        class="fa fa-github"></span> Github Login</button></a>
         </header>
     </section>
 
 
-    <h1 class="slogan">YOUR PRIVACY, OUR RESPONSIBILITY</h1>
-    <p class="slogan-text">Moene's secret clipboard provides you with trusted encrypted communications with others. Use your GitHub account to quickly start your first chat!</p>
+    <h1 class="slogan">E2E ENCRYPTED PASTEBIN</h1>
+    <p class="slogan-text">Moene's secret clipboard provides you with trusted encrypted text pasting with others. Use
+        your GitHub account to quickly share your first paste!</p>
     <div class="center">
         <a href="https://github.com/login/oauth/authorize?client_id=<%= client_id %>"> <button>Login</button> </a>
     </div>
@@ -34,7 +35,7 @@
     </div>
 
     <script type="text/javascript">
-        consoleText(['Hello World!', 'UWU', 'Good Night!'], 'text', ['#FFFFFF', '#FFFFFF', 'FFFFFF']);
+        consoleText(['Share a log...', 'Tell a secret...', 'Send a snippet...', 'Share some lyrics...', 'UWU'], 'text', ['#FFFFFF']);
 
         function consoleText(words, id, colors) {
             if (colors === undefined) colors = ['#fff'];
@@ -45,12 +46,12 @@
             var waiting = false;
             var target = document.getElementById(id)
             target.setAttribute('style', 'color:' + colors[0])
-            window.setInterval(function() {
+            window.setInterval(function () {
 
                 if (letterCount === 0 && waiting === false) {
                     waiting = true;
                     target.innerHTML = words[0].substring(0, letterCount)
-                    window.setTimeout(function() {
+                    window.setTimeout(function () {
                         var usedColor = colors.shift();
                         colors.push(usedColor);
                         var usedWord = words.shift();
@@ -62,7 +63,7 @@
                     }, 1000)
                 } else if (letterCount === words[0].length + 1 && waiting === false) {
                     waiting = true;
-                    window.setTimeout(function() {
+                    window.setTimeout(function () {
                         x = -1;
                         letterCount += x;
                         waiting = false;
@@ -72,7 +73,7 @@
                     letterCount += x;
                 }
             }, 120)
-            window.setInterval(function() {
+            window.setInterval(function () {
                 if (visible === true) {
                     con.className = 'console-underscore hidden'
                     visible = false;

@@ -22,7 +22,6 @@ client.connect()
             // blank query returns all documents
         return collection.find({}).toArray()
     })
-    .then(console.log)
 
 app.set('view engine', 'ejs');
 
@@ -133,8 +132,8 @@ app.get('/logout', (req, res) => {
     req.session.login = false;
     res.redirect('/login');
 });
-app.post('/getmessage', (req, res) => {
-    const messageID = req.body.mid
+app.get('/getmessage', (req, res) => {
+    const messageID = req.query.mid
     console.log(messageID)
     let response = []
     collection.find({ mid: Number(messageID) }).toArray().then(result => {

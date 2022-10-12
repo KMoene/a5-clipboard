@@ -1,14 +1,10 @@
 let cryptMessage = ""
 let sender = ""
-
+var myCodeMirror
 console.log("Loading data...")
-const mid = window.location.search.replace(/[^0-9]/g,""),
-    json = { mid:mid },
-    body = JSON.stringify(json)
-fetch('/getmessage', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body
+const mid = window.location.search.replace(/[^0-9]/g,"")
+fetch('/getmessage?mid='+mid, {
+    method: 'GET'
 })
 .then(async function (response) {
     let data = await response.json()
@@ -21,13 +17,23 @@ fetch('/getmessage', {
         }else{
             document.getElementById("sender-name").textContent="Anonymous"
         }
+        myCodeMirror = CodeMirror.fromTextArea(document.getElementById("msgContent"),{
+            lineNumbers: true,
+            gutter: true,
+            lineWrapping: true,
+            theme:"monokai",
+            styleActiveLine: {nonEmpty: true},
+            styleActiveSelected: true,
+        });
     }else{
         document.title = "Message Not Found | Moene's Secret Clipboard"
         document.getElementById("header2").textContent="404 Message Not Found"
         document.getElementById("text").textContent="We can not find the message you are looking for."
         document.getElementById("decrypt-form").style.visibility="hidden"
+        document.getElementById("msg").style.visibility="hidden"
     }
 })
+
 // called when viewing message
 const handleViewing = function (e) {
     // prevent default form action from being carried out
@@ -37,7 +43,7 @@ const handleViewing = function (e) {
     var bytes  = CryptoJS.AES.decrypt(cryptMessage, password);
     var originalText = bytes.toString(CryptoJS.enc.Utf8);
     // showing info
-    document.getElementById("msgContent").textContent =  originalText
+    myCodeMirror.getDoc().setValue(originalText)
 }
 
 window.onload = function () {
