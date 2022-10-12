@@ -13,6 +13,7 @@ console.log("Loading data...")
 const params = new URLSearchParams(window.location.search);
 mid = params.get('m')
 let passwd = params.get('p')
+console.log(passwd)
 fetch('/getmessage?mid=' + mid, {
     method: 'GET'
 })
@@ -29,37 +30,37 @@ fetch('/getmessage?mid=' + mid, {
             } else {
                 document.getElementById("sender-name").textContent = "Anonymous"
             }
+            if (passwd != "") {
+                const password = document.querySelector('#password').value
+                // Decrypt
+                var bytes = CryptoJS.AES.decrypt(cryptMessage, password);
+                var originalText = bytes.toString(CryptoJS.enc.Utf8);
+                // Decrypt image
+                if (cryptImage != '' && originalText != "") {
+                    var decryptedImage = CryptoJS.AES.decrypt(cryptImage, password)
+                    try {
+                        var typedArray = convertWordArrayToUint8Array(decryptedImage)
+                        var fileDec = new Blob([typedArray])
+                        var img = document.createElement("img")
+                        var url = window.URL.createObjectURL(fileDec)
+                        img.src = url
+                        container = document.getElementById('container')
+                        container.appendChild(img)
+                    } catch (error) {
+                    }
+                }
+                if(originalText!=""){
+                    document.getElementById("decrypt-form").style.visibility = "hidden"
+                }
+                // showing info
+                myCodeMirror.getDoc().setValue(originalText)
+            }
         } else {
             document.title = "Message Not Found | Moene's Secret Clipboard"
             document.getElementById("header2").textContent = "404 Message Not Found"
             document.getElementById("text").textContent = "We can not find the message you are looking for."
             document.getElementById("decrypt-form").style.visibility = "hidden"
             document.getElementById("msg").style.visibility = "hidden"
-        }
-        if (passwd != "") {
-            const password = document.querySelector('#password').value
-            // Decrypt
-            var bytes = CryptoJS.AES.decrypt(cryptMessage, password);
-            var originalText = bytes.toString(CryptoJS.enc.Utf8);
-            // Decrypt image
-            if (cryptImage != '' && originalText != "") {
-                var decryptedImage = CryptoJS.AES.decrypt(cryptImage, password)
-                try {
-                    var typedArray = convertWordArrayToUint8Array(decryptedImage)
-                    var fileDec = new Blob([typedArray])
-                    var img = document.createElement("img")
-                    var url = window.URL.createObjectURL(fileDec)
-                    img.src = url
-                    container = document.getElementById('container')
-                    container.appendChild(img)
-                } catch (error) {
-                }
-            }
-            if(originalText!=""){
-                document.getElementById("decrypt-form").style.visibility = "hidden"
-            }
-            // showing info
-            myCodeMirror.getDoc().setValue(originalText)
         }
     })
 
