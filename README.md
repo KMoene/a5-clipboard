@@ -14,7 +14,7 @@ Please adjust your monitor resolution to 100% for the best browsing experienceã€
 ## 3.Technologies 
 Listed below are some of the technologies we used in the development process:
 
- - MERN  
+ - MEN 
  - Mongodb (M)  
  - express.js (E)  
  - Node.js (N)  
