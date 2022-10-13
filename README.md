@@ -21,14 +21,16 @@ Listed below are some of the technologies we used in the development process:
  - CryptoJS  
  - javascript  
 
-## 4.Challenges 
-The integration of front-end and back-end was once a very big challenge. At the same time, it is also very interesting and challenging not to use passport.js to implement Oauth to help users authenticate.
-The encrypted string array size is also problematic since the default size of express json middleware is 1 mb, and it took us a while to find the right way to expand the size.
+## 4.Challenges   
+Overall, the major challenges are the communication between clients and server as well as the client side encryption/decryption.    
+The integration of front-end and back-end was once a very big challenge. At the same time, it is also very interesting and challenging not to use passport.js to implement Oauth to help users authenticate. To avoid spam-messaging, we all agreed on using Oauth via Github.    
+The encrypted string array size is also problematic since the default size of express json middleware is 1 mb, and it took us a while to find the right way to expand the size.   
+
 
 ## 5.Team Contribution
 
-**Hao Chen**:  
-**Sizhe Li**:  
+**Hao Chen**:  Message encryption, decryption, client server communication, link generation, client-sending and client-viewing routing set up  
+**Sizhe Li**:  Frontend Design, include Animation generation, Logo design. Main CSS coding, desgin the UI appearance to make it looks like a modern website  
 **Kawane Moene**: Backend, MongoDB, message auto-decrypt, misc UI-tweaks, project management  
 **Shen Fang**: Image encryption, decryption, storage and display. CSS. Link copy button
 

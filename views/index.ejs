@@ -17,7 +17,7 @@
 <body>
     <section>
         <header>
-            <a href="/"><img class="logo" src="/images/logo.png" alt="logo"></a>
+            <img onclick="window.location.href='/'" class="logo" src="/images/logo.png" alt="logo">
             <a href="/logout"><button><span class="fa fa-power-off"></span> Logout</button></a>
         </header>
     </section>
@@ -42,7 +42,7 @@
                 </div-->
                 <br>
                 <div class="form-control">
-                    <input type='file' name = 'image' id='newImage'>
+                    <input type='file' name = 'image' accept="image/*" id='newImage'>
                     <label>Image</label>
                 </div>
                 <div class="ui checkbox">
