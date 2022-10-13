@@ -30,7 +30,7 @@ The encrypted string array size is also problematic since the default size of ex
 ## 5.Team Contribution
 
 **Hao Chen**:  Message encryption, decryption, client server communication, link generation, client-sending and client-viewing routing set up  
-**Sizhe Li**:  Frontend Design, include Animation generation, Logo design，CSS coding, desgin the basic UI appearance  
+**Sizhe Li**:  Frontend Design, include Animation generation, Logo design。Main CSS coding, desgin the UI appearance to make it looks like a modern website  
 **Kawane Moene**: Backend, MongoDB, message auto-decrypt, misc UI-tweaks, project management  
 **Shen Fang**: Image encryption, decryption, storage and display. CSS. Link copy button
 
