@@ -14,11 +14,12 @@ To prevent dummy accounts from unnecessarily burdening the server, we decided to
 ## 3.Technologies 
 Listed below are some of the technologies we used in the development process:
 
- 1.MERN 
- 2.Mongodb (M) 
- 3.express.js (E) 
- 4.Node.js (N) 
- 5.CryptoJS 
- 6.javascript 
+ 1.MERN  
+ 
+ 2.Mongodb (M)  
+ 3.express.js (E)  
+ 4.Node.js (N)  
+ 5.CryptoJS  
+ 6.javascript  
 
 ## 3.Technologies 
