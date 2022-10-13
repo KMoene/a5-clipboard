@@ -15,7 +15,6 @@ The sender can choose to be anonymous or have their Github username to be displa
 ## 3.Technologies 
 Listed below are some of the technologies we used in the development process:
 
- - MEN 
  - Mongodb (M)  
  - express.js (E)  
  - Node.js (N)  
