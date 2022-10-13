@@ -1,6 +1,16 @@
 let cryptMessage = ""
 let cryptImage = ""
 let sender = ""
+const labels = document.querySelectorAll(".form-control label");
+labels.forEach((label) => {
+    label.innerHTML = label.innerText
+        .split("")
+        .map(
+            (letter, idx) =>
+                `<span style="transition-delay:${idx * 50}ms">${letter}</span>`
+        )
+        .join("")
+})
 const myCodeMirror = CodeMirror.fromTextArea(document.getElementById("msgContent"), {
     lineNumbers: true,
     gutter: true,
