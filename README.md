@@ -15,7 +15,6 @@ To prevent dummy accounts from unnecessarily burdening the server, we decided to
 Listed below are some of the technologies we used in the development process:
 
  1.MERN  
- 
  2.Mongodb (M)  
  3.express.js (E)  
  4.Node.js (N)  
