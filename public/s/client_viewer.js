@@ -30,6 +30,8 @@ fetch('/getmessage?mid=' + mid, {
             } else {
                 document.getElementById("sender-name").textContent = "Anonymous"
             }
+            document.getElementById("decrypt-form").style.visibility = "visible"
+            document.getElementById("msg").style.visibility = "visible"
             if (passwd != null) {
                 // Decrypt
                 var bytes = CryptoJS.AES.decrypt(cryptMessage, passwd);
@@ -58,8 +60,6 @@ fetch('/getmessage?mid=' + mid, {
             document.title = "Message Not Found | Moene's Secret Clipboard"
             document.getElementById("header2").textContent = "404 Message Not Found"
             document.getElementById("text").textContent = "We can not find the message you are looking for."
-            document.getElementById("decrypt-form").style.visibility = "hidden"
-            document.getElementById("msg").style.visibility = "hidden"
         }
     })
 

@@ -74,7 +74,7 @@ app.post('/submit', (req, res) => {
             }
             tempdata.date = formatDate()
                 //Doing this to prevent user input getting into tempdata.anonymous
-            if (req.body.anonymous == "true") {
+            if (req.body.anonymous) {
                 tempdata.anonymous = true;
             } else {
                 tempdata.anonymous = false;

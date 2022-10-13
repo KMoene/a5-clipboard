@@ -24,14 +24,14 @@
     </section>10px
     <div id = 'container' class="container" style="margin-top: 5%;">
         <h2 style="font-size: larger;" id="header2">Decrypt Message</h2>
-        <div id="text" style="line-height: 1.5;">Here's a message shared to you from <span id="sender-name"></span></div>
-        <form id="decrypt-form">
+        <div id="text" style="line-height: 1.5;">Here's a message shared to you from <span id="sender-name">Loading...</span></div>
+        <form id="decrypt-form" style="visibility: hidden;">
             <label>Input Password to View Message</label><br>
             <input type='text' id='password' required placeholder="Enter the password">
             <button id="viewMessage">view</button>
         </form>
 
-        <div class="textarea-resized" style="padding-top: 1%;" id="msg"><textarea id="msgContent"></textarea></div>
+        <div class="textarea-resized" style="padding-top: 1%;visibility: hidden;" id="msg"><textarea id="msgContent"></textarea></div>
     </div>
 
 
