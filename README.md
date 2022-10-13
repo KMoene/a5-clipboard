@@ -27,11 +27,10 @@ The encrypted string array size is also problematic since the default size of ex
 
 ## 5.Team Contribution
 
-Hao Chen:  
-Sizhe Li:  
-Shen Fang:  
-Kawane Moene: Backend, MongoDB, message auto-decrypt, misc UI-tweaks, project management
-Shen Fang: Image encryption, decryption, storage and display. CSS. Link copy button
+**Hao Chen**:  
+**Sizhe Li**:  
+**Kawane Moene**: Backend, MongoDB, message auto-decrypt, misc UI-tweaks, project management  
+**Shen Fang**: Image encryption, decryption, storage and display. CSS. Link copy button
 
 ## 6.Video Link
 Here is the video where each group member explains some aspect of our project:  
