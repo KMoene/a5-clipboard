@@ -28,7 +28,7 @@ The integration of front-end and back-end was once a very big challenge. At the 
 Hao Chen:  
 Sizhe Li:  
 Shen Fang:  
-Kawane Moene:  
+Kawane Moene: Backend, MongoDB, message auto-decrypt, misc UI-tweaks, project management
 
 ## 6.Video Link
 
