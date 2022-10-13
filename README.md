@@ -22,10 +22,12 @@ Listed below are some of the technologies we used in the development process:
  - javascript  
 
 ## 4.Challenges   
-Overall, the major challenges are the communication between clients and server as well as the client side encryption/decryption.    
+Overall for backend, the major challenges are the communication between clients and server as well as the client side encryption/decryption.    
 The integration of front-end and back-end was once a very big challenge. At the same time, it is also very interesting and challenging not to use passport.js to implement Oauth to help users authenticate. To avoid spam-messaging, we all agreed on using Oauth via Github. 
 
 The encrypted string array size is also problematic since the default size of express json middleware is 1 mb, and it took us a while to find the right way to expand the size.   
+
+For front end, to ensure that website visitors can easily interact with the page and also the visual style of the website looks modern enough, we did a lot of adjustments comparing with the first version through the combination of design, technology and programming to code our website's appearance, as well as taking care of debugging.
 
 
 ## 5.Team Contribution
