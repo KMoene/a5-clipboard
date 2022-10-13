@@ -10,15 +10,24 @@ All encryption will be done at the client so that no plaintext would be shown th
 
 ## 2.Additional Instructions 
 To prevent dummy accounts from unnecessarily burdening the server, we decided to let users log in only through GitHub Oauth.
-
+Please adjust your monitor resolution to 100% for the best browsing experience。
 ## 3.Technologies 
 Listed below are some of the technologies we used in the development process:
 
- -1.MERN  
- -2.Mongodb (M)  
- -3.express.js (E)  
- -4.Node.js (N)  
- -5.CryptoJS  
- -6.javascript  
+ - MERN  
+ - Mongodb (M)  
+ - express.js (E)  
+ - Node.js (N)  
+ - CryptoJS  
+ - javascript  
 
-## 3.Technologies 
+## 4.Challenges 
+The integration of front-end and back-end was once a very big challenge. At the same time, it is also very interesting and challenging not to use passport.js to implement Oauth to help users authenticate.
+## 5.Team Contribution
+
+Hao Chen:  
+Sizhe Li:  
+Shen Fang:  
+Kawane Moene:  
+
+## 6.Video Link
