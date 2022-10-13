@@ -20,3 +20,5 @@ Listed below are some of the technologies we used in the development process:
  4.Node.js (N)
  5.CryptoJS
  6.javascript
+
+## 3.Technologies 
