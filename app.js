@@ -24,8 +24,8 @@ client.connect()
     })
 
 app.set('view engine', 'ejs');
-
-app.use(express.urlencoded({ extended: true }))
+app.use(express.json({limit: '16mb'}));
+app.use(express.urlencoded({limit: '16mb', extended: true }))
 app.use(express.static('public'))
 app.use(express.static('views'))
 app.use(cookie({
@@ -59,12 +59,11 @@ app.post('/submit', (req, res) => {
         }))
         return;
     }
-    console.log(req.body)
     switch (req.body.action) {
         case "new":
             let tempdata = {}
+            tempdata.image = req.body.image
             console.log(req.body)
-                //tempdata.name = "owo"
             tempdata.name = req.session.name
             if (req.body.message != "") {
                 tempdata.message = req.body.message
@@ -75,7 +74,7 @@ app.post('/submit', (req, res) => {
             }
             tempdata.date = formatDate()
                 //Doing this to prevent user input getting into tempdata.anonymous
-            if (req.body.anonymous == "true") {
+            if (req.body.anonymous) {
                 tempdata.anonymous = true;
             } else {
                 tempdata.anonymous = false;
@@ -88,6 +87,7 @@ app.post('/submit', (req, res) => {
                         "RESULT": "NEW_OK",
                         "mid": tempdata.mid,
                         // just for now
+                        "img": tempdata.image,
                         "msg": tempdata.message
                     }))
                 })
@@ -142,12 +142,14 @@ app.get('/getmessage', (req, res) => {
                 response.push({
                     "name": "",
                     "message": element.message,
+                    "image": element.image,
                     "mid": element.mid
                 })
             } else {
                 response.push({
                     "name": element.name,
                     "message": element.message,
+                    "image": element.image,
                     "mid": element.mid
                 })
             }

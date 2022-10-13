@@ -1,44 +1,85 @@
 // called when posting message
 var myCodeMirror
-const handleNewMessage = function(e) {
-        // prevent default form action from being carried out
-        e.preventDefault()
+var mLink = ''
+var reader
+let imageValid = false
+const handleNewMessage = function (e) {
+    // prevent default form action from being carried out
+    e.preventDefault()
+    document.querySelector('#addNewMessage').innerText = "Submitting..."
+    reader = new FileReader()
+    const image = document.querySelector('#newImage').files[0]
+    try {
+        reader.readAsArrayBuffer(image)
+    } catch {
+        console.log("invalid image")
+        sendMessage();
+    }
+    reader.onload = () => {
+        imageValid = true
+        console.log("image valid")
+        sendMessage();
+    }
+}
+function sendMessage() {
+    console.log("Sending message...")
+    const message = myCodeMirror.getDoc().getValue(),
+        password = document.querySelector('#password').value,
+        // encrypt the message
+        ciphertext = CryptoJS.AES.encrypt(message, password).toString()
+    // Image Encryption
+    let encryptedImage = ''
+    let isAnonymous = document.getElementById("is-anonymous").checked;
+    let inclPasswd = document.getElementById("incl-password").checked;
+    const wordArray = CryptoJS.lib.WordArray.create(reader.result)
+    let json = {}
+    if (imageValid) {
+        encryptedImage = CryptoJS.AES.encrypt(wordArray, password).toString()
+        json = { message: ciphertext, image: encryptedImage, action: "new", anonymous: isAnonymous }
+    } else {
+        json = { message: ciphertext, image: '', action: "new", anonymous: isAnonymous }
+    }
+    body = JSON.stringify(json)
 
-        const message = myCodeMirror.getDoc().getValue(),
-            password = document.querySelector('#password').value,
-            // encrypt the message
-            ciphertext = CryptoJS.AES.encrypt(message, password).toString(),
-            json = { message: ciphertext, action: "new" },
-            body = JSON.stringify(json)
+    // Send data to server
+    fetch('/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body
+    })
+        .then(async function (response) {
+            let data = await response.json()
 
-        fetch('/submit', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body
-            })
-            .then(async function(response) {
-                let data = await response.json()
+            // DEGUB: Decrypt 
+            var bytes = CryptoJS.AES.decrypt(data.msg, password);
+            var originalText = bytes.toString(CryptoJS.enc.Utf8);
+            console.log(data.mid);
+            console.log(data.msg);
+            console.log(originalText);
+            // end of DEBUG
 
-                // DEGUB: Decrypt 
-                var bytes = CryptoJS.AES.decrypt(data.msg, password);
-                var originalText = bytes.toString(CryptoJS.enc.Utf8);
-                console.log(data.mid);
-                console.log(data.msg);
-                console.log(originalText);
-                // end of DEBUG
-
-                // adding info
-                const origin = window.location.host
-                document.getElementById("msg-link").style.visibility = "visible";
-                if (location.protocol !== 'https:') {
+            // adding info
+            const origin = window.location.host
+            document.getElementById("msg-link").style.visibility = "visible";
+            if (location.protocol !== 'https:') {
+                if (inclPasswd) {
+                    document.getElementById("msgLink").value = "http://" + origin + "/s/?m=" + data.mid+"&p="+password
+                } else {
                     document.getElementById("msgLink").value = "http://" + origin + "/s/?m=" + data.mid
+                }
+            } else {
+                if (inclPasswd) {
+                    document.getElementById("msgLink").value = "https://" + origin + "/s/?m=" + data.mid+"&p="+password
                 } else {
                     document.getElementById("msgLink").value = "https://" + origin + "/s/?m=" + data.mid
                 }
+            }
+            document.querySelector('#addNewMessage').innerText = "Add"
+            myCodeMirror.getDoc().setValue("")
+            document.querySelector('#newImage').value = null
+        })
+}
 
-            })
-    }
-    //form wave
 const labels = document.querySelectorAll(".form-control label");
 
 labels.forEach((label) => {
@@ -46,22 +87,20 @@ labels.forEach((label) => {
         .split("")
         .map(
             (letter, idx) =>
-            `<span style="transition-delay:${idx * 50}ms">${letter}</span>`
+                `<span style="transition-delay:${idx * 50}ms">${letter}</span>`
         )
-        .join("");
-});
+        .join("")
+})
 
-
-
-window.onload = function() {
+window.onload = function () {
     const addMessage_btn = document.querySelector('#addNewMessage')
     addMessage_btn.onclick = handleNewMessage
-    myCodeMirror = CodeMirror.fromTextArea(document.getElementById("newMessage"),{
+    myCodeMirror = CodeMirror.fromTextArea(document.getElementById("newMessage"), {
         lineNumbers: true,
         gutter: true,
         lineWrapping: true,
-        theme:"monokai",
-        styleActiveLine: {nonEmpty: true},
+        theme: "monokai",
+        styleActiveLine: { nonEmpty: true },
         styleActiveSelected: true,
     });
 }
