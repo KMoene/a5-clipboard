@@ -6,11 +6,12 @@ let imageValid = false
 const handleNewMessage = function (e) {
     // prevent default form action from being carried out
     e.preventDefault()
+    document.querySelector('#addNewMessage').innerText = "Submitting..."
     reader = new FileReader()
     const image = document.querySelector('#newImage').files[0]
     try {
         reader.readAsArrayBuffer(image)
-    }catch{
+    } catch {
         console.log("invalid image")
         sendMessage();
     }
@@ -61,11 +62,21 @@ function sendMessage() {
             const origin = window.location.host
             document.getElementById("msg-link").style.visibility = "visible";
             if (location.protocol !== 'https:') {
-                document.getElementById("msgLink").value = "http://" + origin + "/s/?m=" + data.mid
+                if (inclPasswd) {
+                    document.getElementById("msgLink").value = "http://" + origin + "/s/?m=" + data.mid+"&p="+password
+                } else {
+                    document.getElementById("msgLink").value = "http://" + origin + "/s/?m=" + data.mid
+                }
             } else {
-                document.getElementById("msgLink").value = "https://" + origin + "/s/?m=" + data.mid
+                if (inclPasswd) {
+                    document.getElementById("msgLink").value = "https://" + origin + "/s/?m=" + data.mid+"&p="+password
+                } else {
+                    document.getElementById("msgLink").value = "https://" + origin + "/s/?m=" + data.mid
+                }
             }
-
+            document.querySelector('#addNewMessage').innerText = "Add"
+            myCodeMirror.getDoc().setValue("")
+            document.querySelector('#newImage').value = null
         })
 }
 

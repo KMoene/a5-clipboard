@@ -31,12 +31,9 @@
                 <%= motd %>
             </div>
         </p>
-
-
-
         <div class="container">
-            <h1 class="subtitle">Leave Your Message</h1>
-            <div class="textarea-resized"><textarea id="newMessage"></textarea></div>
+            <h1 class="subtitle">Paste Your Message</h1>
+            <div class="textarea-resized" style="width:100%;"><textarea id="newMessage"></textarea></div>
             
             <form>
                 <!--div class="form-control">
@@ -65,16 +62,13 @@
                 </div>
                 <button class="addbutton" id="addNewMessage">Add</button>
             </form>
-
-
-
-        </div>
-        <div class="ui action input" id="msg-link" style="visibility:hidden;">
-            <input type="text" id="msgLink" value="http://ww.short.url/c0opq">
-            <button id = "copy" class="ui teal right labeled icon button">
-                <i class="copy icon"></i>
-                Copy
-            </button>
+            <div class="ui action input" id="msg-link" style="visibility:hidden;">
+                <input type="text" id="msgLink" value="http://ww.short.url/c0opq">
+                <button id = "copy" class="ui teal right labeled icon button">
+                    <i class="copy icon"></i>
+                    Copy
+                </button>
+            </div>
         </div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js" integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.js" integrity="sha512-8RnEqURPUc5aqFEN04aQEiPlSAdE0jlFS/9iGgUyNtwFnSKCXhmB6ZTNl7LnDtDWKabJIASzXrzD0K+LYexU9g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

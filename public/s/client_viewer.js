@@ -45,6 +45,7 @@ fetch('/getmessage?mid=' + mid, {
                         var img = document.createElement("img")
                         var url = window.URL.createObjectURL(fileDec)
                         img.src = url
+                        img.style = "width:100%;"
                         container = document.getElementById('container')
                         container.appendChild(img)
                     } catch (error) {
