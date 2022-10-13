@@ -10,8 +10,7 @@ All encryption will be done at the client so that no plaintext would be shown th
 
 ## 2.Additional Instructions 
 To prevent dummy accounts from unnecessarily burdening the server, we decided to let users log in only through GitHub Oauth.
-Please adjust your monitor resolution to 100% for the best browsing experience。  
-The sender can choose to be anonymous or have their Github username to be displayed along with the message.
+Please adjust your monitor resolution to 100% for the best browsing experience. The sender can choose to be anonymous or have their Github username to be displayed along with the message.   
 ## 3.Technologies 
 Listed below are some of the technologies we used in the development process:
 
