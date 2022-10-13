@@ -32,6 +32,6 @@ Kawane Moene:
 
 ## 6.Video Link
 
-Here is the video where each group member explains some aspect of our project:
+Here is the video where each group member explains some aspect of our project:  
 https://www.youtube.com/watch?v=9WaYCdQ8FOQ
 
