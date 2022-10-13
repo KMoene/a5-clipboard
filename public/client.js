@@ -9,15 +9,15 @@ const handleNewMessage = function (e) {
     document.querySelector('#addNewMessage').innerText = "Submitting..."
     reader = new FileReader()
     const image = document.querySelector('#newImage').files[0]
+    reader.onload = () => {
+        imageValid = true
+        console.log("image valid")
+        sendMessage();
+    }
     try {
         reader.readAsArrayBuffer(image)
     } catch {
         console.log("invalid image")
-        sendMessage();
-    }
-    reader.onload = () => {
-        imageValid = true
-        console.log("image valid")
         sendMessage();
     }
 }
@@ -60,19 +60,24 @@ function sendMessage() {
 
             // adding info
             const origin = window.location.host
-            document.getElementById("msg-link").style.visibility = "visible";
+            document.getElementById("msg-link").style.visibility = "visible"
+            let link = ''
             if (location.protocol !== 'https:') {
                 if (inclPasswd) {
-                    document.getElementById("msgLink").value = "http://" + origin + "/s/?m=" + data.mid+"&p="+password
+                    link = "http://" + origin + "/s/?m=" + data.mid+"&p="+password
                 } else {
-                    document.getElementById("msgLink").value = "http://" + origin + "/s/?m=" + data.mid
+                    link = "http://" + origin + "/s/?m=" + data.mid
                 }
             } else {
                 if (inclPasswd) {
-                    document.getElementById("msgLink").value = "https://" + origin + "/s/?m=" + data.mid+"&p="+password
+                    link = "https://" + origin + "/s/?m=" + data.mid+"&p="+password
                 } else {
-                    document.getElementById("msgLink").value = "https://" + origin + "/s/?m=" + data.mid
+                    link = "https://" + origin + "/s/?m=" + data.mid
                 }
+            }
+            document.getElementById("msgLink").value = link
+            document.getElementById("copy").onclick = () =>{
+                navigator.clipboard.writeText(link)
             }
             document.querySelector('#addNewMessage').innerText = "Add"
             myCodeMirror.getDoc().setValue("")

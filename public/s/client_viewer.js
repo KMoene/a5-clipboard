@@ -1,6 +1,16 @@
 let cryptMessage = ""
 let cryptImage = ""
 let sender = ""
+const labels = document.querySelectorAll(".form-control label");
+labels.forEach((label) => {
+    label.innerHTML = label.innerText
+        .split("")
+        .map(
+            (letter, idx) =>
+                `<span style="transition-delay:${idx * 50}ms">${letter}</span>`
+        )
+        .join("")
+})
 const myCodeMirror = CodeMirror.fromTextArea(document.getElementById("msgContent"), {
     lineNumbers: true,
     gutter: true,
@@ -81,6 +91,7 @@ const handleViewing = function (e) {
             var img = document.createElement("img")
             var url = window.URL.createObjectURL(fileDec)
             img.src = url
+            img.style = "width:100%;"
             container = document.getElementById('container')
             container.appendChild(img)
         } catch (error) {
