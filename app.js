@@ -46,10 +46,10 @@ app.get('/', (req, res) => {
     if (!req.session.login) {
         res.redirect('/login');
     }
-    let motd = "Welcome"
+    let motd = "User: "
     console.log(req.session.login)
     motd += " " + req.session.name;
-    res.render('index', { client_id: clientID, motd: motd, title: "a5-clipboard", client_id: clientID });
+    res.render('index', { client_id: clientID, motd: motd, title: "Moene's secret clipboard", client_id: clientID });
 });
 app.post('/submit', (req, res) => {
     if (req.session.login != true) {

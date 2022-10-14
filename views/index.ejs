@@ -24,48 +24,45 @@
     <div>
 
         <p class="instruction">Welcome to
-            <%= title %>.Please enter the message you want to send and the password that goes with it below. Note that your password is the only way you can view this information, so keep that in mind!
+            <%= title %>. Simply share what you want, and we will get the job done for you.
         </p>
-        <p class="instruction">MOTD:
-            <div class="instruction">
+        <p class="instruction">
+            <div class="subtitle" style="color:yellowgreen">
                 <%= motd %>
             </div>
         </p>
         <div class="container">
-            <h1 class="subtitle">Paste Your Message</h1>
+            <h1 class="instruction">Paste Your Message</h1>
             <div class="textarea-resized" style="width:100%;font-size:16px;"><textarea id="newMessage"></textarea></div>
+
+            <div class="form-control">
+                <input type='file' name = 'image' accept="image/*" id='newImage'>
+                <label>Image(optional)</label>
+            </div>
+           
+            <div id="warning"></div>
+
+            <div class="form-control">
+                <input type="password" id='password' required>
+                <label id='warning'>Password</label>
+            </div>
             
-            <form>
-                <!--div class="form-control">
-                    <input type="text " id='newMessage' required>
-                    <label>  Message</label>
-                </div-->
-                <br>
-                <div class="form-control">
-                    <input type='file' name = 'image' accept="image/*" id='newImage'>
-                    <label>Image</label>
-                </div>
-                <div class="ui checkbox">
-                    <input type="checkbox" id="is-anonymous" name="anonymous">
-                    <label for="anonymous" class="inverted">Anonymous</label>
-                </div>
-                &nbsp; &nbsp;
-                <div class="ui checkbox">
-                    <input type="checkbox" id="incl-password" name="incl-pw">
-                    <label for="incl-pw" class="inverted">Include Password (Not Secure)</label>
-                </div>
-                <br>
-                <br>
-                <div class="form-control">
-                    <input type="password" id='password' required>
-                    <label>Password</label>
-                </div>
-                <button class="addbutton" id="addNewMessage">Add</button>
-            </form>
-            <div class="ui action input" id="msg-link" style="visibility:hidden;">
-                <input type="text" id="msgLink" value="http://ww.short.url/c0opq">
+            <div class="ui checkbox">
+                <input type="checkbox" id="is-anonymous" name="anonymous">
+                <label for="anonymous" class="inverted">Anonymous</label>
+            </div>
+            &nbsp; &nbsp;
+            <div class="ui checkbox">
+                <input type="checkbox" id="incl-password" name="incl-pw">
+                <label for="incl-pw" class="inverted">Include Password (Not Secure)</label>
+            </div>
+            <br>
+            
+            <br><button class="addbutton" id="addNewMessage">Add</button>
+            <br>
+            <br><div class="ui action input" id="msg-link" style="visibility:hidden;">
+                <input type="text" id="msgLink">
                 <button id = "copy" class="ui teal right labeled icon button">
-                    <i class="copy icon"></i>
                     Copy
                 </button>
             </div>

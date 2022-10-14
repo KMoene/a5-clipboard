@@ -6,6 +6,12 @@ let imageValid = false
 const handleNewMessage = function (e) {
     // prevent default form action from being carried out
     e.preventDefault()
+    const password = document.querySelector('#password').value
+    if (password === "") {
+        document.querySelector('#warning').innerHTML =  "<span style='color: crimson; font-size:18px'>Warning: Password can not be empty!</span>"
+        return console.log("password is empty!");
+    }
+    document.querySelector('#warning').innerText = ""
     document.querySelector('#addNewMessage').innerText = "Submitting..."
     reader = new FileReader()
     const image = document.querySelector('#newImage').files[0]
@@ -13,12 +19,14 @@ const handleNewMessage = function (e) {
         imageValid = true
         console.log("image valid")
         sendMessage();
+        document.querySelector('#password').value = ""
     }
     try {
         reader.readAsArrayBuffer(image)
     } catch {
         console.log("invalid image")
         sendMessage();
+        document.querySelector('#password').value = ""
     }
 }
 function sendMessage() {
