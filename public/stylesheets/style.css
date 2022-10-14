@@ -79,6 +79,20 @@ button:hover {
     background-color: rgba(44, 44, 44, 0.8);
 }
 
+.viewbutton{
+    padding: 10px 75px;
+    margin-left: 20px;
+    background-color: rgb(28,186,215);
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s wase 0s;
+}
+
+.viewbutton:hover{
+    background-color: rgba(22, 135, 155, 0.8);
+}
+
 body {
     background: linear-gradient( 135deg, #0F2027, #203A43, #2C5364);
     margin: 0;
