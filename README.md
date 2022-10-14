@@ -1,5 +1,6 @@
 # Webware Final Project ---- Moene's Clipboard
-
+## Project Link  
+https://clip.kmoene.com  
 ## Team members
 Hao Chen, Sizhe Li, Shen Fang, Kawane Moene
 
@@ -38,5 +39,5 @@ For front end, to ensure that website visitors can easily interact with the page
 
 ## 6.Video Link
 Here is the video where each group member explains some aspect of our project:  
-https://www.youtube.com/watch?v=9WaYCdQ8FOQ
+https://youtu.be/5eAGUm2SzbE
 
