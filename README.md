@@ -1,5 +1,7 @@
 # Webware Final Project ---- Moene's Clipboard
 ## Project Link  
+(Due to our policy, We are actively blocking access from some countries)
+
 https://clip.kmoene.com  
 ## Team members
 Hao Chen, Sizhe Li, Shen Fang, Kawane Moene
@@ -37,7 +39,4 @@ For front end, to ensure that website visitors can easily interact with the page
 **Kawane Moene**: Backend, MongoDB, message auto-decrypt, misc UI-tweaks, project management  
 **Shen Fang**: Image encryption, decryption, storage and display. CSS. Link copy button
 
-## 6.Video Link
-Here is the video where each group member explains some aspect of our project:  
-https://youtu.be/5eAGUm2SzbE
 
