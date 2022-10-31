@@ -1,6 +1,8 @@
 # Webware Final Project ---- Moene's Clipboard
 ## Project Link  
-(Due to our policy, We are actively blocking access from some countries)
+Due to our policy, We are actively blocking access from some countries. Please use a VPN if your country got blocked by me.
+
+No illeagal content is allowed on this service. Database will get randomly cleaned from time to time.
 
 https://clip.kmoene.com  
 ## Team members
